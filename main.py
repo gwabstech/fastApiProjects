@@ -26,3 +26,10 @@ def getBlogType(type:BlogType):
 @app.get("/blog/{id}")
 def get_glog(id: int):
     return {"message": f"blog number {id}"}
+
+@app.get("/blog/{id}/comments/{comment_id}")
+def getComment(id:int,comment_id:int,valid:bool = True,username:Optional[str] = None):
+    return {'message': f'blog_id {id}, comment_id {comment_id}, valid {valid},username {username}'}
+
+
+
