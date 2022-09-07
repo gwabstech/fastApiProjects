@@ -1,7 +1,5 @@
 from enum import Enum
-from tokenize import String
-from typing import Optional, Union
-
+from typing import Optional
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -16,9 +14,11 @@ def gt1(page:int,pageSize:int = 1):
     return {"message": f"the page is {page} and the size is {pageSize}"}
 
 class BlogType(str,Enum):
-    short="short"
-    story="story"
-    howTo="howTo"
+    short = "short"
+    story = "story"
+    howTo = "howTo"
+
+
 @app.get("/blog/type/{type}")
 def getBlogType(type:BlogType):
     return {"messge":f"Blog type {type}"}
