@@ -4,11 +4,13 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-#path and queryparams
+# queryparams
+# Default values
+# optional params
 
 
 @app.get("/blog/all")
-def get_all_blogs(page: int = 1, pageSize: Optional[int] = 1):
+def get_all_blogs(page: int = 1, pageSize: Optional[int] = 2):
     return {"message": f"All blogs retuned for page {page}  size {pageSize}"}
 
 
