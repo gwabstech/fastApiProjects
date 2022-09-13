@@ -14,13 +14,13 @@ def get_all_blogs(page: int = 1, pageSize: Optional[int] = 2):
     return {"message": f"All blogs retuned for page {page}  size {pageSize}"}
 
 
-@app.get("/")
+@app.get("/", tags=["Home Page"], summary="This is the home page")
 def welcome():
     return {"message": 'Welcome to the new api'}
 
 
 # path parameters
-@app.get("/spesific_blog/{id}", status_code=status.HTTP_404_NOT_FOUND, tags=["blog"])
+@app.get("/spesific_blog/{id}", status_code=status.HTTP_404_NOT_FOUND, tags=["blog"], summary="returns specific blog base on id ")
 def get_blog(id: int, response: Response):
     if id > 10:
         response.status_code = status.HTTP_404_NOT_FOUND
@@ -30,7 +30,7 @@ def get_blog(id: int, response: Response):
         return {"message": f"blog with id {id} ", "status": status.HTTP_200_OK}
 
 
-@app.get("/blog/{page}", tags=["blog"])
+@app.get("/blog/{page}", tags=["blog"], description="this api call return a list of blogs with the page given in the request")
 def gt1(page: int, pageSize: int = 1):
     return {"message": f"the page is {page} and the size is {pageSize}"}
 
@@ -63,5 +63,3 @@ operation and discriptins
 
 
 """
-
-# Status code
