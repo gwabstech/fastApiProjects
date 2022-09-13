@@ -1,5 +1,6 @@
 from enum import Enum
 from typing import Optional
+from urllib import response
 from fastapi import FastAPI, status, Response
 
 app = FastAPI()
@@ -48,7 +49,9 @@ def getBlogType(type: BlogType):
 
 # Quary and path params combinations
 # optional and default value
-@app.get("/blog/{id}/comments/{comment_id}", tags=["Comments"])
+@app.get("/blog/{id}/comments/{comment_id}",
+         tags=["Comments"],
+         response_description="This returns base on id and comments")
 def getComment(id: int, comment_id: int, valid: bool = True, username: Optional[str] = None):
     return {'message': f'blog_id {id}, comment_id {comment_id}, valid {valid},username {username}'}
 
